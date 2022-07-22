@@ -20,14 +20,17 @@ function Help() {
 								the "Add Recipe" button on the main page.
 							</li>
 							<br />
-							<img src="../../assets/AddRecipeNavigation.png" alt="" />
+							<img
+								src="../../assets/AddRecipeNavigation.png"
+								alt=""
+							/>
 							<br />
 							<small>
 								Adding a recipe from the navigation bar.
 							</small>
 							<br />
 							<br />
-							<img src="../../assets/AddRecipeHome.png" alt=""/>
+							<img src="../../assets/AddRecipeHome.png" alt="" />
 							<br />
 							<small>Adding a recipe from the Home Page.</small>
 							<br />
@@ -35,57 +38,61 @@ function Help() {
 							<li>
 								Fill out the administrative details of the
 								recipe in the top section. All of these fields
-								are&nbsp;
-								<span class="underline bold red">required</span>
+								are{" "}
+								<span className="underline bold red">
+									required
+								</span>
 								. <br />
 								<br />
-								<img src="../../assets/AdminSection.png" alt="" />
+								<img
+									src="../../assets/AdminSection.png"
+									alt=""
+								/>
 								<br />
 								<small>
-									Recipe Administrative Details - Required
-									Fields
+									Recipe Header Details - Required Fields
 								</small>
 								<br />
 								<br />
 								<ul>
 									<li>
-										<span class="bold underline">
+										<span className="bold underline">
 											Recipe Title
 										</span>
 										: A title to identify the recipe. This
 										is used by the "Search Recipes" feature.
 									</li>
 									<li>
-										<span class="bold underline">
+										<span className="bold underline">
 											Author
 										</span>
 										: The person who created the recipe.
 									</li>
 									<li>
-										<span class="bold underline">
+										<span className="bold underline">
 											Difficulty
 										</span>
 										: How challenging the recipe is to make.
 										Options include easy, medium, and hard.
 									</li>
 									<li>
-										<span class="bold underline">
+										<span className="bold underline">
 											Time Amount
 										</span>
 										: The numeric amount of time required to
-										comlete the recipe, such as
-										<span class="bold underline">
+										comlete the recipe, such as{" "}
+										<span className="bold underline">
 											30
 										</span>{" "}
 										in "30 Minutes".
 									</li>
 									<li>
-										<span class="bold underline">
+										<span className="bold underline">
 											Time Units
 										</span>
 										: The units of time required to complete
-										the recipe, such as
-										<span class="bold underline">
+										the recipe, such as{" "}
+										<span className="bold underline">
 											Minutes
 										</span>{" "}
 										in "30 Minutes".
@@ -98,7 +105,10 @@ function Help() {
 								All of the ingredient fields are optional.
 							</li>
 							<br />
-							<img src="../../assets/IngredientSection.png" alt="" />
+							<img
+								src="../../assets/IngredientSection.png"
+								alt=""
+							/>
 							<br />
 							<small>
 								Ingredient Section - All Fields Optional
@@ -107,49 +117,55 @@ function Help() {
 							<br />
 							<ul>
 								<li>
-									<span class="bold underline">Count</span>:
-									The quantity of an ingredient such as{" "}
-									<span class="bold underline">2</span>
-									in "2 tomatoes".
+									<span className="bold underline">
+										Count
+									</span>
+									: The quantity of an ingredient such as{" "}
+									<span className="bold underline">2</span> in
+									"2 tomatoes".
 								</li>
 								<li>
-									<span class="bold underline">Volume</span>:
-									The numeric part of a measurement for an
-									ingredient such as
-									<span class="bold underline">16</span> in
-									"16 Ounces".
+									<span className="bold underline">
+										Volume
+									</span>
+									: The numeric part of a measurement for an
+									ingredient such as{" "}
+									<span className="bold underline">16</span>{" "}
+									in "16 Ounces".
 								</li>
 								<li>
-									<span class="bold underline">Units</span>:
-									The unit of measure for an ingredient such
-									as
-									<span class="bold underline">
+									<span className="bold underline">
+										Units
+									</span>
+									: The unit of measure for an ingredient such
+									as{" "}
+									<span className="bold underline">
 										Ounces
 									</span>{" "}
 									in "16 Ounces".
 								</li>
 								<li>
-									<span class="bold underline">
+									<span className="bold underline">
 										Container
 									</span>
 									: The type of container that an ingredient
-									usually comes in, such as
-									<span class="bold underline">Box</span> in
-									"1 Box Macaroni Noodles".
+									usually comes in, such as{" "}
+									<span className="bold underline">Box</span>{" "}
+									in "1 Box Macaroni Noodles".
 								</li>
 								<li>
-									<span class="bold underline">
+									<span className="bold underline">
 										Ingredient
 									</span>
 									: The text description of the ingredient.
-									For example,
-									<span class="bold underline">
+									For example,{" "}
+									<span className="bold underline">
 										Macaroni Noodles
 									</span>{" "}
 									in "1 Box Macaroni Noodles".
 								</li>
 								<li>
-									<span class="bold underline">
+									<span className="bold underline">
 										Add New Ingredient
 									</span>
 									: Press the "Add New Ingredient" button in
@@ -157,7 +173,7 @@ function Help() {
 									section to add a new ingredient row.
 								</li>
 								<li>
-									<span class="bold underline">
+									<span className="bold underline">
 										Delete Ingredient
 									</span>
 									: Press the "Delete" button to the right of
@@ -169,7 +185,10 @@ function Help() {
 								Enter all of the instructions for the recipe.
 							</li>
 							<br />
-							<img src="../../assets/InstructionSection.png" alt=""/>
+							<img
+								src="../../assets/InstructionSection.png"
+								alt=""
+							/>
 							<br />
 							<small>
 								Instruction Section - All Fields Optional
@@ -178,19 +197,19 @@ function Help() {
 							<br />
 							<ul>
 								<li>
-									<span class="bold underline">Step</span>:
-									The number of the instruction step. This
+									<span className="bold underline">Step</span>
+									: The number of the instruction step. This
 									field is automatically generated.
 								</li>
 								<li>
-									<span class="bold underline">
+									<span className="bold underline">
 										Instruction
 									</span>
 									: The description of the actions to be
 									performed during this step of the recipe.
 								</li>
 								<li>
-									<span class="bold underline">
+									<span className="bold underline">
 										Add New Instruction
 									</span>
 									: Press the "Add New Instruction" button in
@@ -198,7 +217,7 @@ function Help() {
 									section to add a new instruction row.
 								</li>
 								<li>
-									<span class="bold underline">
+									<span className="bold underline">
 										Delete Instruction
 									</span>
 									: Press the "Delete" button to the right of
@@ -215,7 +234,7 @@ function Help() {
 						<ol>
 							<li>Using the "Search Recipes" feature.</li>
 							<br />
-							<img src="../../assets/SearchFeature.png" alt=""/>
+							<img src="../../assets/SearchFeature.png" alt="" />
 							<br />
 							<small>Searching By Recipe Title</small>
 							<br />
@@ -234,12 +253,12 @@ function Help() {
 							<br />
 							<li>Using the "My Recipes" link.</li>
 							<br />
-							<img src="../../assets/MyRecipesLink.png" alt=""/>
+							<img src="../../assets/MyRecipesLink.png" alt="" />
 							<br />
 							<small>My Recipes - Navigation Link</small>
 							<br />
 							<br />
-							<img src="../../assets/MyRecipesHome.png" alt=""/>
+							<img src="../../assets/MyRecipesHome.png" alt="" />
 							<br />
 							<small>My Recipes - Home Page</small>
 							<br />
@@ -258,11 +277,13 @@ function Help() {
 							</ul>
 							<br />
 							<li>
-								<span class="red bold underline">Advanced</span>
+								<span className="red bold underline">
+									Advanced
+								</span>
 								: Using the Address Bar.
 							</li>
 							<br />
-							<img src="../../assets/UrlSearch.png" alt=""/>
+							<img src="../../assets/UrlSearch.png" alt="" />
 							<br />
 							<small>URL Search - Advanced</small>
 							<br />
@@ -270,12 +291,16 @@ function Help() {
 							<ul>
 								<li>
 									To do a search from the address bar, text
-									can be entered after
-									"http://localhost:4200/MyRecipes/".
+									can be entered after{" "}
+									<code>
+										http://localhost:3000/MyRecipes/
+									</code>
 								</li>
 								<li>
-									For example,
-									"http://localhost:4200/MyRecipes/cookie"
+									For example,{" "}
+									<code>
+										http://localhost:3000/MyRecipes/cookie
+									</code>{" "}
 									should find "Grandma's Cookies".
 								</li>
 							</ul>
@@ -302,7 +327,10 @@ function Help() {
 								through the text.
 							</li>
 							<br />
-							<img src="../../assets/StrikethroughButtons.png" alt=""/>
+							<img
+								src="../../assets/StrikethroughButtons.png"
+								alt=""
+							/>
 							<br />
 							<small>Strikethrough Buttons</small>
 							<br />
@@ -325,7 +353,7 @@ function Help() {
 								favorite method.
 							</li>
 							<br />
-							<img src="../../assets/EditButton.png" alt=""/>
+							<img src="../../assets/EditButton.png" alt="" />
 							<br />
 							<small>The Edit and Delete Buttons</small>
 							<br />
@@ -343,7 +371,7 @@ function Help() {
 								"Cancel" button.
 							</li>
 							<br />
-							<img src="../../assets/UpdateButton.png" alt=""/>
+							<img src="../../assets/UpdateButton.png" alt="" />
 							<br />
 							<small>The Update and Cancel Buttons</small>
 							<br />
@@ -360,7 +388,7 @@ function Help() {
 								favorite method.
 							</li>
 							<br />
-							<img src="../../assets/EditButton.png" alt=""/>
+							<img src="../../assets/EditButton.png" alt="" />
 							<br />
 							<small>The Edit and Delete Buttons</small>
 							<br />
@@ -378,7 +406,7 @@ function Help() {
 								"Cancel" button.
 							</li>
 							<br />
-							<img src="../../assets/DeleteButton.png" alt=""/>
+							<img src="../../assets/DeleteButton.png" alt="" />
 							<br />
 							<small>
 								The Delete and Cancel Buttons in the Modal

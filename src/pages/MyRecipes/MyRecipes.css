@@ -1,0 +1,27 @@
+.card {
+	border-radius: 20px;
+	margin: auto;
+	max-width: 500px;
+}
+
+.card-header {
+	border-radius: 20px 20px 0 0;
+	font-size: 20px;
+}
+
+.card:hover {
+	box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	transform: scale(1.005);
+	transition: transform 0.1s;
+}
+
+.card:active {
+	box-shadow: 3px 8px 8px rgba(0, 0, 0, 0.2);
+	transform: scale(0.995);
+}
+
+.card-title {
+	font-size: 18px;
+	text-decoration: underline;
+}

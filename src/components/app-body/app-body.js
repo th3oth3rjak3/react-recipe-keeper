@@ -11,6 +11,7 @@ function AppBody() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/MyRecipes" element={<MyRecipes />} />
+					<Route path="/MyRecipes/:search" element={<MyRecipes />} />
 					<Route path="/AddRecipe" element={<AddRecipe />} />
 					<Route path="/Help" element={<Help />} />
 				</Routes>

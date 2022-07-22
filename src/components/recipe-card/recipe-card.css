@@ -1,0 +1,36 @@
+.recipe-card {
+	border-radius: 20px !important;
+	margin: auto;
+	max-width: 700px;
+    width: 60%;
+    min-width: 350px;
+	margin-bottom: 20px;
+}
+
+.card-header {
+	border-radius: 20px 20px 0 0 !important;
+	font-size: 20px;
+}
+
+.card:hover {
+	box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	transform: scale(1.005);
+	transition: transform 0.1s;
+}
+
+.card:active {
+	box-shadow: 3px 8px 8px rgba(0, 0, 0, 0.2);
+	transform: scale(0.995);
+}
+
+.card-title {
+    border-radius: 20px 20px 0 0 !important;
+	font-size: 18px;
+	text-decoration: underline;
+    margin-top: 5px;
+}
+
+.recipe-card-container {
+    text-align: center;
+}
