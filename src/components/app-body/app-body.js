@@ -2,11 +2,14 @@ import React from "react";
 import "./app-body.css";
 import { Container } from "react-bootstrap";
 import { AddRecipe, MyRecipes, Home, Help } from "../../pages";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, Outlet } from "react-router-dom";
+import NavBar from "../navbar/navbar";
+import Footer from "../footer/footer";
 
 function AppBody() {
 	return (
-		<BrowserRouter>
+		<>
+			<NavBar></NavBar>
 			<Container className="body">
 				<Routes>
 					<Route path="/" element={<Home />} />
@@ -15,8 +18,10 @@ function AppBody() {
 					<Route path="/AddRecipe" element={<AddRecipe />} />
 					<Route path="/Help" element={<Help />} />
 				</Routes>
+				<Outlet />
 			</Container>
-		</BrowserRouter>
+			<Footer></Footer>
+		</>
 	);
 }
 

@@ -1,56 +1,57 @@
 import React from "react";
-import { Card, Nav, Container, Row, Col } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
 import "./recipe-card.css";
+import { NavLink } from "react-router-dom";
 
-function RecipeCard(props) {
-	// props should have _id, header.title,
-
+function RecipeCard({
+	link,
+	color,
+	title,
+	author,
+	difficulty,
+	timeAmount,
+	timeUnits,
+	message,
+}) {
+	let _author_title = author ? "Author" : "";
+	let _difficulty_title = difficulty ? "Difficulty" : "";
+	let _time_required_title = timeAmount ? "Time Required" : "";
+	let _time_data = timeAmount
+		? timeAmount + " " + timeUnits + (timeAmount === 1 ? "" : "s")
+		: "";
 	return (
 		<div className="recipe-card-container">
 			<Card className="recipe-card">
-				<Nav.Link href={"/MyRecipes" + props.link}>
-					<Card.Header>{props.title}</Card.Header>
-					{/* The above was in an h5 before */}
-					<Card.Body style={{ backgroundColor: props.color }}>
-						{/* <h5 className="card-title">{props.title}</h5> */}
+				<NavLink exact className="nav-link" to={link}>
+					<Card.Header>{title}</Card.Header>
+					<Card.Body style={{ backgroundColor: color }}>
 						<Container className="recipe-card-container" fluid="md">
 							<Row>
 								<Col>
 									<h5 className="card-title">
-										{props.author ? "Author" : ""}
+										{_author_title}
 									</h5>
-									<p className="card-text">{props.author}</p>
+									<p className="card-text">{author}</p>
 								</Col>
 								<Col>
 									<h5 className="card-title">
-										{props.difficulty ? "Difficulty" : ""}
+										{_difficulty_title}
 									</h5>
-									<p className="card-text">
-										{props.difficulty}
-									</p>
+									<p className="card-text">{difficulty}</p>
 								</Col>
 								<Col>
 									<h5 className="card-title">
-										{props.timeAmount
-											? "Time Required"
-											: ""}
+										{_time_required_title}
 									</h5>
-									<p className="card-text">
-										{props.timeAmount
-											? props.timeAmount +
-											  " " +
-											  props.timeUnits +
-											  (props.timeAmount === 1
-													? ""
-													: "s")
-											: ""}
-									</p>
+									<p className="card-text">{_time_data}</p>
 								</Col>
 							</Row>
-							<p className="card-text">{props.children}</p>
+							<Row>
+								<p className="card-text">{message}</p>
+							</Row>
 						</Container>
 					</Card.Body>
-				</Nav.Link>
+				</NavLink>
 			</Card>
 		</div>
 	);

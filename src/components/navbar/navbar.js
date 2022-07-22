@@ -4,118 +4,81 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate, NavLink, Link } from "react-router-dom";
 
-export default class NavBar extends React.Component {
-	constructor(props) {
-		super(props);
+function NavBar() {
+	const [searchVal, setSearchVal] = useState("");
 
-		this.state = {
-			isLoading: true,
-			error: null,
-			recipes: [],
-			title: "My Recipes | RecipeKeeper",
-		};
-	}
+	const navigate = useNavigate();
 
-	componentDidMount() {
-		const preventFormSubmit = () => {
-			let myField = document.getElementById("searchInput");
-			myField.addEventListener("keypress", (event) => {
-				if (event.key === "Enter") {
-					event.preventDefault();
-					document.getElementById("searchButton").click();
-				}
-			});
-		};
-		preventFormSubmit();
-	}
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		doSearch();
+	};
 
-	render() {
-		const doSearch = async () => {
-			let searchParam = await document.getElementById("searchInput")
-				.value;
-			window.location.href = "/MyRecipes/" + searchParam;
-		};
-		return (
-			<Navbar bg="light" className="navbar" expand="lg">
-				<Container fluid>
-					<Nav.Link href="/">
-						<img
-							className="d-inline-block align-top"
-							src="/Assets/chef-hat.svg"
-							alt="A small chef's hat."
-							id="chef-hat"
-						></img>
-					</Nav.Link>
-					<Navbar.Brand href="/">&nbsp;RecipeKeeper</Navbar.Brand>
-					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-					<Navbar.Collapse id="responsive-navbar-nav">
-						<Nav
-							activeKey={Location.pathname}
-							className="me-auto my-2 my-lg-0"
+	const doSearch = () => {
+		navigate("/MyRecipes/" + searchVal);
+		setSearchVal("");
+	};
+
+	const updateSearch = (e) => {
+		setSearchVal(e.target.value);
+	};
+
+	return (
+		<Navbar bg="light" className="navbar" expand="lg">
+			<Container fluid>
+				<NavLink className="nav-link" to="/">
+					<img
+						className="d-inline-block align-top"
+						src="/Assets/chef-hat.svg"
+						alt="A small chef's hat."
+						id="chef-hat"
+					></img>
+				</NavLink>
+				<Link className="navbar-brand" to="/">
+					&nbsp;RecipeKeeper
+				</Link>
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+				<Navbar.Collapse id="responsive-navbar-nav">
+					<Nav className="me-auto my-2 my-lg-0">
+						<NavLink className={"nav-link"} to="/">
+							Home
+						</NavLink>
+						<NavLink className={"nav-link"} to="/MyRecipes">
+							My Recipes
+						</NavLink>
+						<NavLink className={"nav-link"} to="/AddRecipe">
+							Add Recipe
+						</NavLink>
+						<NavLink className="nav-link" to="/Help">
+							Help!
+						</NavLink>
+					</Nav>
+					<Form onSubmit={handleSubmit} className="d-flex">
+						<Form.Control
+							id="searchInput"
+							type="search"
+							placeholder="Search Recipes"
+							className="me-2"
+							aria-label="Search"
+							value={searchVal}
+							onInput={updateSearch}
+						/>
+						<Button
+							variant="secondary"
+							id="searchButton"
+							value="Search"
+							onClick={doSearch}
 						>
-							<Nav.Link
-								href="/"
-								className={
-									window.location.pathname === "/"
-										? "active"
-										: ""
-								}
-							>
-								Home
-							</Nav.Link>
-							<Nav.Link
-								href="/MyRecipes"
-								className={
-									window.location.pathname === "/MyRecipes"
-										? "active"
-										: ""
-								}
-							>
-								My Recipes
-							</Nav.Link>
-							<Nav.Link
-								href="/AddRecipe"
-								className={
-									window.location.pathname === "/AddRecipe"
-										? "active"
-										: ""
-								}
-							>
-								Add Recipe
-							</Nav.Link>
-							<Nav.Link
-								href="/Help"
-								className={
-									window.location.pathname === "/Help"
-										? "active"
-										: ""
-								}
-							>
-								Help!
-							</Nav.Link>
-						</Nav>
-						<Form className="d-flex">
-							<Form.Control
-								id="searchInput"
-								type="search"
-								placeholder="Search"
-								className="me-2"
-								aria-label="Search"
-							/>
-							<Button
-								variant="secondary"
-								id="searchButton"
-								value="Search"
-								onClick={doSearch}
-							>
-								Search
-							</Button>
-						</Form>
-					</Navbar.Collapse>
-				</Container>
-			</Navbar>
-		);
-	}
+							Search
+						</Button>
+					</Form>
+				</Navbar.Collapse>
+			</Container>
+		</Navbar>
+	);
 }
+
+export default NavBar;
