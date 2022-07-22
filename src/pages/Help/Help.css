@@ -1,0 +1,40 @@
+.accordion-button {
+    background-color: rgb(234, 234, 234) !important;
+    color: black !important;
+    font-size: 20px;
+}
+
+.accordion-button:hover {
+    background-color: rgb(210, 210, 210) !important;
+}
+
+.accordion-button[aria-expanded="true"] {
+    box-shadow: none;
+    color: black;
+    text-decoration: underline;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+
+h5 {
+    font-size: 18px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+img {
+    max-width: 100%;
+}

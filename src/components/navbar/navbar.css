@@ -1,0 +1,24 @@
+#chef-hat {
+    width: 20px;
+}
+
+.navbar {
+    max-width: 80%;
+    width: 80%;
+    margin: auto;
+    position: fixed;
+    top: 0px;
+    z-index: 999;
+    background-color: rgb(234, 234, 234) !important;
+    margin-bottom: 100px !important;
+}
+
+nav {
+    border-radius: 0 0 15px 15px;
+    background-color: rgb(234, 234, 234);
+    border: thin solid lightgray;
+}
+
+.active {
+    text-decoration: underline;
+}
