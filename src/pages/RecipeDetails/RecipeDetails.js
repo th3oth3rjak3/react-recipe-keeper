@@ -6,7 +6,7 @@ export default class RecipeDetails extends React.Component {
     
     
     render(){
-        return;
+        return <div>Recipe Details works!</div>;
     }
 
     componentDidMount(){}

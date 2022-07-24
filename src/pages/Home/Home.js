@@ -1,15 +1,9 @@
 import AppCard from "../../components/app-card/app-card";
 import "./Home.css";
-import { HelmetProvider, Helmet } from "react-helmet-async";
 
 function Home() {
-	const title = "Home | RecipeKeeper";
+	document.title = "Home | RecipeKeeper";
 	return (
-		<HelmetProvider>
-			<Helmet>
-				<title>{title}</title>
-			</Helmet>
-
 			<div className="cards">
 				<header className="header">
 					<h1>RecipeKeeper</h1>
@@ -39,7 +33,6 @@ function Home() {
 					</div>
 				</div>
 			</div>
-		</HelmetProvider>
 	);
 }
 

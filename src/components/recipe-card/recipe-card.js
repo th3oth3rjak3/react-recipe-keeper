@@ -22,7 +22,7 @@ function RecipeCard({
 	return (
 		<div className="recipe-card-container">
 			<Card className="recipe-card">
-				<NavLink exact className="nav-link" to={link}>
+				<NavLink className="nav-link" to={link}>
 					<Card.Header>{title}</Card.Header>
 					<Card.Body style={{ backgroundColor: color }}>
 						<Container className="recipe-card-container" fluid="md">
