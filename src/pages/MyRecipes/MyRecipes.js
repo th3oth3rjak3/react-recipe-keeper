@@ -17,10 +17,10 @@ export default function MyRecipes() {
 
 	useEffect(() => {
 		setRecipes(
-			recipeData.map((recipe, id) => {
+			recipeData.map((recipe, index) => {
 				return (
 					<RecipeCard
-						key={id}
+						key={index}
 						link={"../MyRecipes/RecipeDetails/" + recipe._id}
 						title={recipe.header.title}
 						author={recipe.header.author}
@@ -39,6 +39,7 @@ export default function MyRecipes() {
 	if (recipeData.length > 0) {
 		return <>{recipes}</>;
 	} else {
+		// TODO: Add a spinner here and run for up to 5 seconds.
 		return (
 			<RecipeCard
 				title={"No Recipes Found"}

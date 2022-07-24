@@ -15,8 +15,19 @@ async function getMyRecipes(searchParam = "") {
     let response = await axios
 		.get(url, HEADERS)
 		.then((res) => res.data)
-		.catch((err) => console.log(err));
+		.catch((err) => console.error(err));
     return response;
 }
 
-export { getMyRecipes };
+async function getRecipeDetails(searchParam) {
+	let url = SERVER_ROOT + "GetRecipe/" + searchParam;
+
+	let response = await axios
+		.get(url, HEADERS)
+		.then((res) => res.data)
+		.catch((err) => console.error(err));
+	
+	return response;
+}
+
+export { getMyRecipes, getRecipeDetails };

@@ -60,7 +60,6 @@ app.post("/AddRecipe", (req, res) => {
 
 app.get("/GetRecipe/:id", (req, res) => {
     let id = req.params.id;
-    // console.log(id);
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ msg: `No recipe with id :${id}` });
     } else {
@@ -82,7 +81,6 @@ app.get("/GetRecipe/:id", (req, res) => {
                 res.status(500).json({ Error: error });
             })
             .finally(() => {
-                //console.log("finished");
             });
     }
 });
@@ -154,7 +152,7 @@ app.get("/MyRecipes", (req, res) => {
     };
 
     searchRecipes(params).then((recipes) => {
-        console.log(recipes);
+        //console.log(recipes);
         res.status(200).json(recipes);
     });
 });
