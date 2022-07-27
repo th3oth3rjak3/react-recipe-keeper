@@ -3,9 +3,9 @@
     width: 100%;
     position: fixed;
     bottom: 0;
-    max-width: 80%;
+    max-width: 96%;
     background-color: rgb(234, 234, 234);
     border-radius: 15px 15px 0px 0px;
     border: thin solid lightgray;
-    margin-left: 10%;
+    margin-left: 2%;
 }

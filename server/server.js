@@ -42,8 +42,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post("/AddRecipe", (req, res) => {
+    console.log(req.body);
     let newRecipe = new Recipe(req.body);
-    let recipeResponse = new Response();
+    let recipeResponse = {id: "", msg: ""};
     newRecipe
         .save()
         .then((item) => {

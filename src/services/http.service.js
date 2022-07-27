@@ -30,4 +30,14 @@ async function getRecipeDetails(searchParam) {
 	return response;
 }
 
-export { getMyRecipes, getRecipeDetails };
+async function addRecipe(data) {
+	let url = SERVER_ROOT + "AddRecipe";
+	let response = await axios
+		.post(url, data, HEADERS)
+		.then((res) => res.data)
+		.catch((err) => console.error(err));
+
+	return response;
+}
+
+export { getMyRecipes, getRecipeDetails, addRecipe };

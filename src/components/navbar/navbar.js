@@ -9,11 +9,13 @@ import { useNavigate, NavLink, Link } from "react-router-dom";
 
 function NavBar() {
 	const [searchVal, setSearchVal] = useState("");
+	const [expanded, setExpanded] = useState(false);
 
 	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setExpanded(false);
 		doSearch();
 	};
 
@@ -27,7 +29,7 @@ function NavBar() {
 	};
 
 	return (
-		<Navbar bg="light" className="navbar" expand="lg">
+		<Navbar bg="light" className="navbar" expand="lg" expanded={expanded}>
 			<Container fluid>
 				<NavLink className="nav-link" to="/">
 					<img
@@ -40,19 +42,19 @@ function NavBar() {
 				<Link className="navbar-brand" to="/">
 					&nbsp;RecipeKeeper
 				</Link>
-				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(expanded ? false : "expanded")}/>
 				<Navbar.Collapse id="responsive-navbar-nav">
 					<Nav className="me-auto my-2 my-lg-0">
-						<NavLink className={"nav-link"} to="/">
+						<NavLink className={"nav-link"} to="/" onClick={() => setExpanded(false)}>
 							Home
 						</NavLink>
-						<NavLink className={"nav-link"} to="/MyRecipes">
+						<NavLink className={"nav-link"} to="/MyRecipes" onClick={() => setExpanded(false)}>
 							My Recipes
 						</NavLink>
-						<NavLink className={"nav-link"} to="/AddRecipe">
+						<NavLink className={"nav-link"} to="/AddRecipe" onClick={() => setExpanded(false)}>
 							Add Recipe
 						</NavLink>
-						<NavLink className="nav-link" to="/Help">
+						<NavLink className="nav-link" to="/Help" onClick={() => setExpanded(false)}>
 							Help!
 						</NavLink>
 					</Nav>
@@ -70,7 +72,7 @@ function NavBar() {
 							variant="secondary"
 							id="searchButton"
 							value="Search"
-							onClick={doSearch}
+							onClick={() => {doSearch(); setExpanded(false);}}
 						>
 							Search
 						</Button>

@@ -1,0 +1,11 @@
+.add-recipe-label {
+    text-decoration: underline;
+}
+
+.bottom-please {
+    align-self: flex-end;
+}
+
+.light {
+    color: white;
+}

@@ -8,14 +8,13 @@
     background-color: rgb(210, 210, 210) !important;
 }
 
-.accordion-button[aria-expanded="true"] {
-    box-shadow: none;
-    color: black;
-    text-decoration: underline;
-}
 
 .accordion-button:focus {
     box-shadow: none;
+}
+
+.accordion-button:not(.collapsed){
+    text-decoration: underline;
 }
 
 
