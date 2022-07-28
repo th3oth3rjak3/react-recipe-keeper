@@ -1,5 +1,6 @@
-import AppCard from "../../components/app-card/app-card";
+import React from "react";
 import "./Home.css";
+const AppCard = React.lazy(() => import("../../components/app-card/app-card"));
 
 function Home() {
 	document.title = "Home | RecipeKeeper";

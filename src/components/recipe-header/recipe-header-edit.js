@@ -22,8 +22,8 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 	return (
 		<Container fluid>
 			<Stack gap={3}>
-				<Row>
-					<Col lg>
+				<Row className="m-3">
+					<Col xl>
 						<FloatingLabel
 							label="Recipe Title"
 							className="mb-3"
@@ -33,7 +33,7 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 								type="text"
 								name="title"
 								title="The title of the recipe."
-								value={header.title}
+								value={header?.title}
 								onChange={(e) => onHeaderChange(e)}
 								required
 							/>
@@ -42,7 +42,7 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 							</Form.Control.Feedback>
 						</FloatingLabel>
 					</Col>
-					<Col lg>
+					<Col xl>
 						<FloatingLabel
 							label="Author"
 							className="mb-3"
@@ -52,7 +52,7 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 								type="text"
 								name="author"
 								title="The author who created this recipe."
-								value={header.author}
+								value={header?.author}
 								onChange={(e) => onHeaderChange(e)}
 								required
 							/>
@@ -61,7 +61,7 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 							</Form.Control.Feedback>
 						</FloatingLabel>
 					</Col>
-					<Col lg>
+					<Col xl>
 						<FloatingLabel
 							label="Difficulty"
 							className="mb-3"
@@ -69,7 +69,7 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 						>
 							<Form.Select
 								name="difficulty"
-								value={header.difficulty}
+								value={header?.difficulty}
 								onChange={(e) => {
 									onHeaderChange(e);
 								}}
@@ -88,7 +88,7 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 							</Form.Control.Feedback>
 						</FloatingLabel>
 					</Col>
-					<Col lg>
+					<Col xl>
 						<FloatingLabel
 							label="Time Amount"
 							className="mb-3"
@@ -99,7 +99,7 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 								title="The amount of time to make the recipe. (e.g. 20 in '20 Minutes')"
 								name="timeAmount"
 								pattern="[0-9]+"
-								value={header.timeAmount}
+								value={header?.timeAmount}
 								onChange={(e) => {
 									onHeaderChange(e);
 								}}
@@ -110,21 +110,21 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 							</Form.Control.Feedback>
 						</FloatingLabel>
 					</Col>
-					<Col lg>
+					<Col xl>
 						<FloatingLabel label="Time Units">
 							<Form.Select
 								title="The units of time to make the recipe. (e.g. Minutes in '20 Minutes')"
 								name="timeUnits"
-								value={header.timeUnits}
+								value={header?.timeUnits}
 								onChange={(e) => {
 									onHeaderChange(e);
 								}}
 								required
 							>
 								<option disabled value=""></option>
-								{options.map((option, index) => (
+								{options?.map((option, index) => (
 									<option key={index} value={option.value}>
-										{option.label + (header.timeAmount === "1" ? "" : "s")}
+										{option.label + (header?.timeAmount === "1" ? "" : "s")}
 									</option>
 								))}
 							</Form.Select>

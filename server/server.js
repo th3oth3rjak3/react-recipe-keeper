@@ -3,20 +3,20 @@ const app = express();
 const PORT = 3001;
 const cors = require("cors");
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/RecipeKeeper");
+mongoose.connect("mongodb://127.0.0.1:27017/RecipeKeeper");
 
 let recipeSchema = new mongoose.Schema({
     header: {
         title: String,
         author: String,
         difficulty: String,
-        timeAmount: Number,
+        timeAmount: String,
         timeUnits: String,
     },
     ingredients: [
         {
-            count: Number,
-            volume: Number,
+            count: String,
+            volume: String,
             units: String,
             container: String,
             description: String,
@@ -24,7 +24,7 @@ let recipeSchema = new mongoose.Schema({
     ],
     instructions: [
         {
-            step: Number,
+            step: String,
             description: String,
         },
     ],
@@ -34,7 +34,7 @@ const Recipe = mongoose.model("Recipe", recipeSchema);
 
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: "*",
     })
 );
 
@@ -47,12 +47,13 @@ app.post("/AddRecipe", (req, res) => {
     let recipeResponse = {id: "", msg: ""};
     newRecipe
         .save()
-        .then((item) => {
+        .then(() => {
             recipeResponse.id = newRecipe.id;
+            console.log(newRecipe.id);
             recipeResponse.msg = "Item saved to database successfully.";
             res.json(recipeResponse).send();
         })
-        .catch((err) => {
+        .catch(() => {
             recipeResponse.id = "";
             recipeResponse.msg = "Cannot save to the database.";
             res.status(400).json(recipeResponse).send();
@@ -178,7 +179,6 @@ app.get("/MyRecipes/:search_val", (req, res) => {
     };
 
     searchRecipes(params).then((recipes) => {
-        console.log(recipes);
         res.status(200).json(recipes);
     });
 });
@@ -200,6 +200,17 @@ app.delete("/Delete/:_id", (req, res) => {
             console.error(error);
             res.status(500).json({ Error: error });
         });
+});
+
+app.post("/Conversion", (req, res) => {
+    if (req.body){
+        const conversion = req.body;
+        conversion.amountTo = "updated";
+        res.status(200).json(conversion);
+    } else {
+        res.status(400).send("Improperly formatted request");
+    }
+    
 });
 
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));

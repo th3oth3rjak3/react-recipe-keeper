@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./AddRecipe.css";
-import { Accordion, Stack, Button, Form } from "react-bootstrap";
-import RecipeHeaderEdit from "../../components/recipe-header/recipe-header-edit";
-import RecipeInstructionEdits from "../../components/recipe-instruction/recipe-instructions-edit";
-import RecipeIngredientEdit from "../../components/recipe-ingredient/recipe-ingredient-edit";
 import { useNavigate } from "react-router-dom";
 import { addRecipe } from "../../services/http.service";
+const RecipeForm = React.lazy(() =>
+	import("../../components/recipe-form/recipe-form")
+);
 
 export default function AddRecipe() {
 	document.title = "Add Recipe | RecipeKeeper";
@@ -110,69 +109,38 @@ export default function AddRecipe() {
 
 	const onFormSubmit = (e) => {
 		const form = e.currentTarget;
-		e.preventDefault();
-		if (form.checkValidity() === false){	
+
+		if (form.checkValidity() === false) {
+			e.preventDefault();
 			e.stopPropagation();
-			console.log("not valid");
 		} else {
-			console.log("pretending to submit the form");
 			const formData = {
 				header: header,
 				ingredients: ingredients,
-				instructions: instructions
+				instructions: instructions,
 			};
-			console.log(formData);
-			addRecipe(formData);
+			e.preventDefault();
+			addRecipe(formData).then((res) => {
+				navigate("/MyRecipes/RecipeDetails/" + res.id);
+			});
 		}
 		setValidated(true);
 	};
 
 	return (
-		<Form onSubmit={onFormSubmit} validated={validated} noValidate>
-			<Accordion defaultActiveKey={""} alwaysOpen="false">
-				<Accordion.Item eventKey="0">
-					<Accordion.Header>
-						{header.title === "" ? "New Recipe" : header.title}
-					</Accordion.Header>
-					<Accordion.Body>
-						<RecipeHeaderEdit header={header} onHeaderChange={onHeaderChange} />
-					</Accordion.Body>
-				</Accordion.Item>
-				<Accordion.Item eventKey="1">
-					<Accordion.Header>Ingredients</Accordion.Header>
-					<Accordion.Body>
-						<RecipeIngredientEdit
-							ingredients={ingredients}
-							onIngredientChange={onIngredientChange}
-							removeIngredient={removeIngredient}
-							addIngredient={addIngredient}
-						/>
-					</Accordion.Body>
-				</Accordion.Item>
-				<Accordion.Item eventKey="2">
-					<Accordion.Header>Instructions</Accordion.Header>
-					<Accordion.Body>
-						<RecipeInstructionEdits
-							instructions={instructions}
-							onInstructionChange={onInstructionChange}
-							addInstruction={addInstruction}
-							removeInstruction={removeInstruction}
-						/>
-					</Accordion.Body>
-				</Accordion.Item>
-				<Accordion.Item eventKey="3">
-					<Accordion.Header>Conversion Tools</Accordion.Header>
-					<Accordion.Body>
-						<Stack gap={3}>{"Coming soon"}</Stack>
-					</Accordion.Body>
-				</Accordion.Item>
-			</Accordion>
-			<Button type="submit" className="btn btn-primary mr-3">
-				{"Submit"}
-			</Button>
-			<Button type="button" className="btn btn-danger m-3" onClick={() => {navigate("/")}}>
-				{"Cancel"}
-			</Button>
-		</Form>
+		<RecipeForm
+			onFormSubmit={onFormSubmit}
+			validated={validated}
+			onHeaderChange={onHeaderChange}
+			header={header}
+			ingredients={ingredients}
+			onIngredientChange={onIngredientChange}
+			removeIngredient={removeIngredient}
+			addIngredient={addIngredient}
+			instructions={instructions}
+			onInstructionChange={onInstructionChange}
+			addInstruction={addInstruction}
+			removeInstruction={removeInstruction}
+		></RecipeForm>
 	);
 }

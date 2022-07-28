@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./recipe-instruction.css";
-import { Stack, Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import DeleteModal from "../delete-modal/delete-modal";
+const DeleteModal = React.lazy(() => import("../delete-modal/delete-modal"));
 
 export default function RecipeInstructionEdits({
 	instructions,
@@ -17,10 +17,9 @@ export default function RecipeInstructionEdits({
 
 	return (
 		<Container>
-			<Stack gap={3}>
-				{instructions.map((instruction, index) => (
-					<Row key={index}>
-						<Col lg={2}>
+				{instructions?.map((instruction, index) => (
+					<Row className="m-3" key={index}>
+						<Col xl={2}>
 							<FloatingLabel label="Step" className="mb-3">
 								<Form.Control
 									name="step"
@@ -32,7 +31,7 @@ export default function RecipeInstructionEdits({
 								></Form.Control>
 							</FloatingLabel>
 						</Col>
-						<Col>
+						<Col xl>
 							<FloatingLabel label="Instruction" className="mb-3">
 								<Form.Control
 									name="description"
@@ -43,7 +42,7 @@ export default function RecipeInstructionEdits({
 								></Form.Control>
 							</FloatingLabel>
 						</Col>
-						<Col lg={1}>
+						<Col xl={1}>
 							<Button
 								type="button"
 								className="btn btn-danger delete-instruction"
@@ -58,21 +57,24 @@ export default function RecipeInstructionEdits({
 						</Col>
 					</Row>
 				))}
-			</Stack>
-			<Button
-				type="button"
-				className="btn btn-primary mt-3"
-				onClick={addInstruction}
-			>
-				Add Instruction
-			</Button>
+			<Row className="m-3">
+				<Col xl>
+					<Button
+						type="button"
+						className="btn btn-primary add-instruction"
+						onClick={addInstruction}
+					>
+						Add Instruction
+					</Button>
+				</Col>
+			</Row>
 			<DeleteModal
 				showModal={showModal}
 				confirmDelete={removeInstruction}
 				index={myIndex}
 				hideModal={hideModal}
-				message={`Are you sure you wish to delete '${instructions[myIndex]?.description}'?`}
-				heading={`Delete Step ${instructions[myIndex]?.step}?`}
+				message={`Are you sure you wish to delete '${instructions ? instructions[myIndex]?.description : ""}'?`}
+				heading={`Delete Step ${instructions ? instructions[myIndex]?.step : ""}?`}
 			/>
 		</Container>
 	);

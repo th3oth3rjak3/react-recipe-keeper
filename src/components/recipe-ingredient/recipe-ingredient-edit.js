@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./recipe-ingredient.css";
-import { Stack, Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import DeleteModal from "../delete-modal/delete-modal";
 
@@ -71,10 +71,9 @@ export default function RecipeIngredientEdit({
 
 	return (
 		<Container>
-			<Stack gap={3}>
-				{ingredients.map((ingredient, index) => (
-					<Row key={index}>
-						<Col lg={2}>
+				{ingredients?.map((ingredient, index) => (
+					<Row className="m-3" key={index}>
+						<Col xl={2}>
 							<FloatingLabel label="Count" className="mb-3">
 								<Form.Control
 									name="count"
@@ -85,11 +84,11 @@ export default function RecipeIngredientEdit({
 									title="Number of items (e.g. 1 for 1 Tomato)"
 								></Form.Control>
 								<Form.Control.Feedback type="invalid">
-								Count must be numeric.
-							</Form.Control.Feedback>
+									Count must be numeric.
+								</Form.Control.Feedback>
 							</FloatingLabel>
 						</Col>
-						<Col lg={2}>
+						<Col xl={2}>
 							<FloatingLabel label="Measurement" className="mb-3">
 								<Form.Control
 									name="volume"
@@ -100,11 +99,11 @@ export default function RecipeIngredientEdit({
 									title="Amount of measurement (e.g. 2 for 2 ounces)"
 								></Form.Control>
 								<Form.Control.Feedback type="invalid">
-								Volume must be numeric.
-							</Form.Control.Feedback>
+									Volume must be numeric.
+								</Form.Control.Feedback>
 							</FloatingLabel>
 						</Col>
-						<Col lg={2}>
+						<Col xl={2}>
 							<FloatingLabel label="Units" className="mb-3">
 								<Form.Select
 									name="units"
@@ -112,7 +111,9 @@ export default function RecipeIngredientEdit({
 									value={ingredient.units}
 									title="Units of measure (e.g. Ounces)"
 								>
-									<option disabled value="">{" "}</option>
+									<option disabled value="">
+										{" "}
+									</option>
 									{options.map((option, index) => (
 										<option key={index} value={option.value}>
 											{option.label +
@@ -124,7 +125,7 @@ export default function RecipeIngredientEdit({
 								</Form.Select>
 							</FloatingLabel>
 						</Col>
-						<Col lg={2}>
+						<Col xl={2}>
 							<FloatingLabel label="Container" className="mb-3">
 								<Form.Control
 									name="container"
@@ -135,7 +136,7 @@ export default function RecipeIngredientEdit({
 								></Form.Control>
 							</FloatingLabel>
 						</Col>
-						<Col>
+						<Col xl>
 							<FloatingLabel label="Ingredient" className="mb-3">
 								<Form.Control
 									name="description"
@@ -146,10 +147,10 @@ export default function RecipeIngredientEdit({
 								></Form.Control>
 							</FloatingLabel>
 						</Col>
-						<Col lg={1}>
+						<Col xl={1}>
 							<Button
 								type="button"
-								className="btn btn-danger delete-instruction"
+								className="btn btn-danger delete-ingredient"
 								onClick={(e) => {
 									setMyIndex(index);
 									setShowModal(true);
@@ -161,20 +162,23 @@ export default function RecipeIngredientEdit({
 						</Col>
 					</Row>
 				))}
-			</Stack>
-			<Button
-				type="button"
-				className="btn btn-primary mt-3"
-				onClick={addIngredient}
-			>
-				Add Ingredient
-			</Button>
+			<Row className="m-3">
+				<Col xl>
+					<Button
+						type="button"
+						className="btn btn-primary add-ingredient"
+						onClick={addIngredient}
+					>
+						Add Ingredient
+					</Button>
+				</Col>
+			</Row>
 			<DeleteModal
 				showModal={showModal}
 				confirmDelete={removeIngredient}
 				index={myIndex}
 				hideModal={hideModal}
-				message={`Are you sure you wish to delete '${ingredients[myIndex]?.description}'?`}
+				message={`Are you sure you wish to delete '${ingredients ? ingredients[myIndex]?.description : ""}'?`}
 				heading={"Delete Ingredient?"}
 			/>
 		</Container>

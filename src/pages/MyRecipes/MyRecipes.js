@@ -1,15 +1,10 @@
+import React from "react";
+import "./MyRecipes.css";
 import { getMyRecipes } from "../../services/http.service";
-import RecipeCard from "../../components/recipe-card/recipe-card";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-	CircleLoader,
-	ClimbingBoxLoader,
-	BarLoader,
-	ClockLoader,
-	PacmanLoader,
-} from "react-spinners";
-//import "./MyRecipes.css";
+const RecipeCard = React.lazy(() => import("../../components/recipe-card/recipe-card"));
+
 
 export default function MyRecipes() {
 	document.title = "My Recipes | RecipeKeeper";
@@ -67,18 +62,5 @@ export default function MyRecipes() {
 		});
 	};
 
-	const cssOverride = {
-		display: "block",
-		margin: "0 auto",
-	};
-
-	return (
-		<>
-			{loading ? (
-				<ClockLoader color={"#36D7B7"} cssOverride={cssOverride} />
-			) : (
-				recipes
-			)}
-		</>
-	);
+	return <>{recipes}</>;
 }

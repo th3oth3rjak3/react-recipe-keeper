@@ -1,0 +1,10 @@
+.convert-button {
+  height: 58px;
+  width: 100px;
+}
+.counter-button{
+  height: 60px;
+  width: 60px;
+  border-radius: 50px;
+  margin-right: 10px;
+}

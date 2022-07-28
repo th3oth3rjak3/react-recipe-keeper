@@ -34,3 +34,32 @@
 .recipe-card-container {
     text-align: center;
 }
+
+.card-body {
+	padding: 30px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.card {
+	border: none;
+	border-radius: 5px;
+	box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2);
+	display: inline-block;
+	height: auto;
+	margin: 10px;
+}
+
+.card:hover {
+	cursor: pointer;
+	transform: scale(1.01);
+}
+
+.card:active {
+	box-shadow: 3px 8px 8px rgba(0, 0, 0, 0.2);
+	transform: scale(0.99);
+}
+
+.card-title {
+	text-decoration: underline;
+}
