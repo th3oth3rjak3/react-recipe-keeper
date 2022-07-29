@@ -8,9 +8,12 @@ import React, { useState } from "react";
 import { useNavigate, NavLink, Link } from "react-router-dom";
 
 function NavBar() {
+
+	// State variables
 	const [searchVal, setSearchVal] = useState("");
 	const [expanded, setExpanded] = useState(false);
 
+	// Local functions
 	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
@@ -28,6 +31,7 @@ function NavBar() {
 		setSearchVal(e.target.value);
 	};
 
+	// Template
 	return (
 		<Navbar bg="light" className="navbar" expand="lg" expanded={expanded}>
 			<Container fluid>

@@ -7,7 +7,11 @@ const RecipeForm = React.lazy(() =>
 );
 
 export default function AddRecipe() {
+
+	// Set the browser tab to the title below
 	document.title = "Add Recipe | RecipeKeeper";
+
+	// State variables to manage all the sub-component state
 	const [instructions, setInstructions] = useState([
 		{ step: 1, description: "" },
 	]);
@@ -22,10 +26,12 @@ export default function AddRecipe() {
 		timeUnits: "",
 	});
 
+	// Form validation state variables
 	const [validated, setValidated] = useState(false);
 
 	const navigate = useNavigate();
 
+	// Change event handler for the header section
 	const onHeaderChange = (event) => {
 		event.preventDefault();
 		event.persist();
@@ -37,6 +43,7 @@ export default function AddRecipe() {
 		});
 	};
 
+	// Event handler to add a new instruction to the form
 	const addInstruction = (e) => {
 		e.preventDefault();
 		const instruction = {
@@ -46,6 +53,7 @@ export default function AddRecipe() {
 		setInstructions((prev) => [...prev, instruction]);
 	};
 
+	// Change event handler to update state for instruction changes
 	const onInstructionChange = (index, event) => {
 		event.preventDefault();
 		event.persist();
@@ -62,17 +70,21 @@ export default function AddRecipe() {
 		});
 	};
 
+	// Event handler to remove instruction from the form.
 	const removeInstruction = (index) => {
 		if (instructions.length > 1) {
 			setInstructions((prev) => prev.filter((item) => item !== prev[index]));
 			setInstructions((prev) =>
 				prev.map((item, idx) => {
+
+					// Renumber the steps when one is deleted.
 					return { ...item, step: idx + 1 };
 				})
 			);
 		}
 	};
 
+	// Event handler to add an ingredient to the form.
 	const addIngredient = (e) => {
 		e.preventDefault();
 		const ingredient = {
@@ -85,6 +97,7 @@ export default function AddRecipe() {
 		setIngredients((prev) => [...prev, ingredient]);
 	};
 
+	// Event handler to manage state changes for ingredients
 	const onIngredientChange = (index, event) => {
 		event.preventDefault();
 		event.persist();
@@ -101,12 +114,14 @@ export default function AddRecipe() {
 		});
 	};
 
+	// Event handler to remove an ingredient from the form.
 	const removeIngredient = (index) => {
 		if (ingredients.length > 1) {
 			setIngredients((prev) => prev.filter((item) => item !== prev[index]));
 		}
 	};
 
+	// Form submission event handler
 	const onFormSubmit = (e) => {
 		const form = e.currentTarget;
 
@@ -120,6 +135,9 @@ export default function AddRecipe() {
 				instructions: instructions,
 			};
 			e.preventDefault();
+
+			// Http service to add the recipe to the database.
+			// Navigate to the new recipe once completed.
 			addRecipe(formData).then((res) => {
 				navigate("/MyRecipes/RecipeDetails/" + res.id);
 			});
@@ -127,6 +145,7 @@ export default function AddRecipe() {
 		setValidated(true);
 	};
 
+	// Template
 	return (
 		<RecipeForm
 			onFormSubmit={onFormSubmit}

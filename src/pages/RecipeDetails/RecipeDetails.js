@@ -18,32 +18,38 @@ const DeleteModal = React.lazy(() =>
 const Tools = React.lazy(() => import("../../components/tools/tools"));
 
 function RecipeDetails() {
+	// Local navigation function
 	const navigate = useNavigate();
-	const { id } = useParams();
 
+	// State variables
+	const { id } = useParams();
 	const [recipeData, setRecipeData] = useState("");
 	const [showModal, setShowModal] = useState(false);
 
+	// Http service to get recipe details and set state
 	const getRecipe = (params) =>
 		getRecipeDetails(params).then((data) => setRecipeData(data[0]));
 
+	// Event handler to go to the edit page.
 	const handleEdit = () => {
-		navigate("/MyRecipes/EditRecipe/" + id, { replace: true });
+		navigate("/MyRecipes/EditRecipe/" + id);
 	};
 
+	// Event handler to delete recipes and then navigate back to My Recipes page
 	const handleDelete = () => {
 		deleteRecipe(id).then(() => navigate("/MyRecipes"));
 	};
 
+	// Handlers to display and hide the delete modal
 	const displayModal = () => setShowModal(true);
-
 	const hideModal = () => setShowModal(false);
 
+	// Wait for id in URL, then get the recipe data
 	useEffect(() => {
 		getRecipe(id);
 	}, [id]);
 
-	//if (recipeData) {
+	// Template
 	return (
 		<div>
 			<Accordion defaultActiveKey={""} alwaysOpen="false">

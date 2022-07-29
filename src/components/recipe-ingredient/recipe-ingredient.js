@@ -10,18 +10,23 @@ export default function RecipeIngredient({
 	container,
 	description,
 }) {
+
+	// Local variables
 	const _count = count ? count : "";
 	const _volume = count && volume ? " - " + volume : volume ? volume : "";
 	const _units = units ? units + (count || volume === 1 ? "" : "s") : "";
 	const _container = container ? container : "";
 	const _description = description ? description : "";
+
 	// Filter for non-null values and then join them with a space.
 	const display_value = [_count, _volume, _units, _container, _description]
 		.filter(Boolean)
 		.join(" ");
 
+	// State variables
 	const [isActive, setIsActive] = useState(true);
 
+	// Button click handler for strike-through
 	const toggleButton = (e) => {
 		setIsActive(!isActive);
 	};

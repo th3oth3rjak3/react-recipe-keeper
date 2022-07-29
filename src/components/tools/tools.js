@@ -6,6 +6,8 @@ import { doConversion } from "../../services/http.service";
 import "./tools.css";
 
 export default function Tools() {
+	
+	// Default shape of conversion object
 	const conversionDefault = {
 		amountFrom: "",
 		amountTo: "",
@@ -13,6 +15,7 @@ export default function Tools() {
 		unitsTo: "",
 	};
 
+	// Valid weight options
 	const weight = [
 		{ display: "Ounce", value: "ounce" },
 		{ display: "Pound", value: "pound" },
@@ -20,6 +23,8 @@ export default function Tools() {
 		{ display: "Gram", value: "gram" },
 		{ display: "Kilogram", value: "kilogram" },
 	];
+
+	// Valid volume options
 	const volume = [
 		{ display: "Cup", value: "cup" },
 		{ display: "Pint", value: "pint" },
@@ -30,56 +35,86 @@ export default function Tools() {
 		{ display: "Milliliter", value: "milliliter" },
 		{ display: "Liter", value: "liter" },
 	];
+
+	// Valid temperature options
 	const temperature = [
 		{ display: "Celsius", value: "celsius" },
 		{ display: "Fahrenheit", value: "fahrenheit" },
 	];
+
+	// Join all lists together into one for initial display
 	const options = [].concat.apply([], [weight, volume, temperature]);
 
+	// State variables
 	const [convertData, setConvertData] = useState(conversionDefault);
 	const [counterValue, setCounterValue] = useState(0);
 	const [unitOptions, setUnitOptions] = useState(options);
 
+	// Observe a typed value and change state in the counter tool
 	const handleCounterChange = (e) => {
 		setCounterValue(e.target.value);
 	};
 
+	// Respond to a button click and change state to increase the count
 	const counterIncrease = () => {
 		setCounterValue((parseInt(counterValue) || 0) + 1);
 	};
 
+	// Respond to a button click and change state to decrease the count.
 	const counterDecrease = () => {
 		if (counterValue > 0) {
 			setCounterValue((parseInt(counterValue) || 0) - 1);
 		}
 	};
 
+	// Reset the counter to 0.
 	const counterReset = () => {
 		setCounterValue(0);
 	};
 
+	// Watch for changes in the option list to filter the units to list.
 	const handleChanges = (e) => {
+		// Destructure the object that changed.
 		const { name, value } = e.target;
+
+		// Update the state of the currently selected item from the dropdown
 		setConvertData((prevState) => ({
 			...prevState,
 			[name]: value,
 		}));
+		
+		// When the unitsFrom dropdown changes, update the unitsTo dropdown
 		if (name === "unitsFrom") {
+			// If a temperature was chosen
 			if (temperature.some((item) => item.value === value)) {
+
+				// Filter out the unit that was chosen so self-conversions don't occur
 				setUnitOptions(temperature.filter((temp) => temp.value !== value));
 			}
+
+			// If a weight was chosen
 			if (weight.some((item) => item.value === value)) {
+
+				// Filter out self-conversions (aka pounds to pounds)
 				setUnitOptions(weight.filter((weight) => weight.value !== value));
 			}
+
+			// If a volume was chosen
 			if (volume.some((item) => item.value === value)) {
+
+				// Filter out self-convsersions
 				setUnitOptions(volume.filter((volume) => volume.value !== value));
 			}
 		}
 	};
 
+	// State variables for form validation
 	const [convertValidated, setConvertValidated] = useState(false);
 
+	// Submit handler for the conversion tool
 	const convertSubmit = (e) => {
+
+		// Local variable to represent the form object
 		const convertForm = e.currentTarget;
 
 		if (convertForm.checkValidity() === false) {
@@ -87,6 +122,9 @@ export default function Tools() {
 			e.stopPropagation();
 		} else {
 			e.preventDefault();
+
+			// Call http service to send data to conversion microservice
+			// Then update state variables
 			doConversion(convertData)
 				.then((res) => setConvertData(res))
 				.catch((err) => {
@@ -96,6 +134,7 @@ export default function Tools() {
 		setConvertValidated(true);
 	};
 
+	// Template
 	return (
 		<Container fluid>
 			<Form

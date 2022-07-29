@@ -4,6 +4,8 @@ import { Form, Col, Row, Container, Stack } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 
 export default function RecipeHeaderEdit({ header, onHeaderChange }) {
+	
+	// Default time unit options
 	const options = [
 		{
 			value: "Hour",
@@ -19,6 +21,7 @@ export default function RecipeHeaderEdit({ header, onHeaderChange }) {
 		},
 	];
 
+	// Template
 	return (
 		<Container fluid>
 			<Stack gap={3}>

@@ -26,7 +26,10 @@ export default function RecipeForm({
 	addInstruction,
 	removeInstruction,
 }) {
+	// Local function to navigate
 	const navigate = useNavigate();
+
+	// Template
 	return (
 		<div>
 			<Form onSubmit={onFormSubmit} validated={validated} noValidate>

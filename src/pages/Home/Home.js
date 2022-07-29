@@ -3,7 +3,10 @@ import "./Home.css";
 const AppCard = React.lazy(() => import("../../components/app-card/app-card"));
 
 function Home() {
+	// Set title
 	document.title = "Home | RecipeKeeper";
+
+	// Template
 	return (
 			<div className="cards">
 				<header className="header">

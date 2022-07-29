@@ -13,12 +13,15 @@ function RecipeCard({
 	timeUnits,
 	message,
 }) {
+	// Private variables
 	let _author_title = author ? "Author" : "";
 	let _difficulty_title = difficulty ? "Difficulty" : "";
 	let _time_required_title = timeAmount ? "Time Required" : "";
 	let _time_data = timeAmount
 		? timeAmount + " " + timeUnits + (timeAmount === 1 ? "" : "s")
 		: "";
+
+		// Template
 	return (
 		<div className="recipe-card-container">
 			<Card className="recipe-card">

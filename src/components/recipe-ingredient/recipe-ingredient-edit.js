@@ -10,10 +10,15 @@ export default function RecipeIngredientEdit({
 	removeIngredient,
 	addIngredient,
 }) {
+
+	// State variables
 	const [showModal, setShowModal] = useState(false);
 	const [myIndex, setMyIndex] = useState(-1);
 
+	// Modal handler
 	const hideModal = () => setShowModal(false);
+	
+	// Default ingredient unit options
 	const options = [
 		{
 			value: "Ounce",
@@ -69,6 +74,7 @@ export default function RecipeIngredientEdit({
 		},
 	];
 
+	// Template
 	return (
 		<Container>
 				{ingredients?.map((ingredient, index) => (

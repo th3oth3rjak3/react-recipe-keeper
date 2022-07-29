@@ -3,7 +3,10 @@ import "./Help.css";
 import { Accordion } from "react-bootstrap";
 
 function Help() {
+	// Set title
 	document.title = "Help! | RecipeKeeper";
+
+	// Template
 	return (
 		<Accordion defaultActiveKey={[""]} alwaysOpen="false">
 			<Accordion.Item eventKey="0">

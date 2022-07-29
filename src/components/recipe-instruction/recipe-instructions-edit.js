@@ -10,11 +10,15 @@ export default function RecipeInstructionEdits({
 	removeInstruction,
 	addInstruction,
 }) {
+
+	// State variables
 	const [showModal, setShowModal] = useState(false);
 	const [myIndex, setMyIndex] = useState(-1);
 
+	// Handler to hide the modal
 	const hideModal = () => setShowModal(false);
 
+	// Template
 	return (
 		<Container>
 				{instructions?.map((instruction, index) => (
