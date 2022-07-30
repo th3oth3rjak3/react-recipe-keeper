@@ -1,15 +1,16 @@
 import axios from "axios";
 
 // Server IP address and port
-const SERVER_ROOT = "http://127.0.0.1:3001/";
+const SERVER_ROOT = "http://192.168.86.22:3001/";
 
 // Microservice server address and port
-// const MICROSERVICE_ROOT = "http://127.0.0.1:3002/";
+const MICROSERVICE_ROOT = "http://192.168.86.22:3002/";
 
 // Headers for HTTP requests
 const HEADERS = {
 	"Content-Type": "application/json",
 	"Access-Control-Allow-Origin": "*",
+	"Accept": "application/json",
 };
 
 // Used to get all recipe data for "My Recipes" page. Accounts for search params.

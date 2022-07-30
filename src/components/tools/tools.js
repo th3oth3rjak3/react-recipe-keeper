@@ -6,7 +6,6 @@ import { doConversion } from "../../services/http.service";
 import "./tools.css";
 
 export default function Tools() {
-	
 	// Default shape of conversion object
 	const conversionDefault = {
 		amountFrom: "",
@@ -82,30 +81,35 @@ export default function Tools() {
 			...prevState,
 			[name]: value,
 		}));
-		
+
 		// When the unitsFrom dropdown changes, update the unitsTo dropdown
 		if (name === "unitsFrom") {
 			// If a temperature was chosen
 			if (temperature.some((item) => item.value === value)) {
-
 				// Filter out the unit that was chosen so self-conversions don't occur
 				setUnitOptions(temperature.filter((temp) => temp.value !== value));
 			}
 
 			// If a weight was chosen
 			if (weight.some((item) => item.value === value)) {
-
 				// Filter out self-conversions (aka pounds to pounds)
 				setUnitOptions(weight.filter((weight) => weight.value !== value));
 			}
 
 			// If a volume was chosen
 			if (volume.some((item) => item.value === value)) {
-
 				// Filter out self-convsersions
 				setUnitOptions(volume.filter((volume) => volume.value !== value));
 			}
+			setConvertData((prevState) => ({
+				...prevState,
+				unitsTo: "",
+			}));
 		}
+		setConvertData((prevState) => ({
+			...prevState,
+			amountTo: "",
+		}));
 	};
 
 	// State variables for form validation
@@ -113,7 +117,6 @@ export default function Tools() {
 
 	// Submit handler for the conversion tool
 	const convertSubmit = (e) => {
-
 		// Local variable to represent the form object
 		const convertForm = e.currentTarget;
 
@@ -126,7 +129,11 @@ export default function Tools() {
 			// Call http service to send data to conversion microservice
 			// Then update state variables
 			doConversion(convertData)
-				.then((res) => setConvertData(res))
+				.then((res) => {
+					if (res) {
+						setConvertData(res);
+					}
+				})
 				.catch((err) => {
 					console.error(err);
 				});
@@ -149,7 +156,7 @@ export default function Tools() {
 							<Form.Control
 								name="amountFrom"
 								pattern="[0-9]*[.]{0,1}[0-9]+"
-								value={convertData?.amountFrom}
+								value={convertData.amountFrom}
 								onChange={handleChanges}
 								required
 							></Form.Control>
@@ -173,7 +180,7 @@ export default function Tools() {
 									return (
 										<option key={index} value={opt.value}>
 											{temperature.includes(opt)
-												? convertData?.amountFrom === "1"
+												? convertData.amountFrom === "1"
 													? "Degree " + opt.display
 													: "Degrees " + opt.display
 												: opt.display +
