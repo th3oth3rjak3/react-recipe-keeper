@@ -3,9 +3,6 @@ import axios from "axios";
 // Server IP address and port
 const SERVER_ROOT = "http://192.168.86.22:3001/";
 
-// Microservice server address and port
-const MICROSERVICE_ROOT = "http://192.168.86.22:3002/";
-
 // Headers for HTTP requests
 const HEADERS = {
 	"Content-Type": "application/json",
