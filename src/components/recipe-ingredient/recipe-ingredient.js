@@ -14,7 +14,7 @@ export default function RecipeIngredient({
 	// Local variables
 	const _count = count ? count : "";
 	const _volume = count && volume ? " - " + volume : volume ? volume : "";
-	const _units = units ? units + (count || volume === 1 ? "" : "s") : "";
+	const _units = units ? units + (count || volume === "1" ? "" : "s") : "";
 	const _container = container ? container : "";
 	const _description = description ? description : "";
 
