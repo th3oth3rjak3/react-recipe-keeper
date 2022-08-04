@@ -1,65 +1,43 @@
 .recipe-card {
 	border-radius: 20px !important;
+	box-shadow: 2px 7px 7px rgba(0, 0, 0, 0.2);
 	margin: auto;
 	max-width: 700px;
-    width: 60%;
-    min-width: 350px;
+  width: 60%;
+  min-width: 350px;
 	margin-bottom: 20px;
 }
 
-.card-header {
+.recipe-card-header {
 	border-radius: 20px 20px 0 0 !important;
 	font-size: 20px;
 }
 
-.card:hover {
+.recipe-card:hover {
 	box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2);
 	cursor: pointer;
 	transform: scale(1.005);
 	transition: transform 0.1s;
 }
 
-.card:active {
+.recipe-card:active {
 	box-shadow: 3px 8px 8px rgba(0, 0, 0, 0.2);
 	transform: scale(0.995);
 }
 
-.card-title {
-    border-radius: 20px 20px 0 0 !important;
+.recipe-card-title {
+  border-radius: 20px 20px 0 0 !important;
 	font-size: 18px;
 	text-decoration: underline;
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .recipe-card-container {
-    text-align: center;
+  text-align: center;
 }
 
-.card-body {
+.recipe-card-body {
 	padding: 30px;
 	text-align: center;
 	border-radius: 5px;
-}
-
-.card {
-	border: none;
-	border-radius: 5px;
-	box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.2);
-	display: inline-block;
-	height: auto;
-	margin: 10px;
-}
-
-.card:hover {
-	cursor: pointer;
-	transform: scale(1.01);
-}
-
-.card:active {
-	box-shadow: 3px 8px 8px rgba(0, 0, 0, 0.2);
-	transform: scale(0.99);
-}
-
-.card-title {
-	text-decoration: underline;
 }

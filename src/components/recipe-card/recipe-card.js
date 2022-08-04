@@ -26,31 +26,31 @@ function RecipeCard({
 		<div className="recipe-card-container">
 			<Card className="recipe-card">
 				<NavLink className="nav-link" to={link}>
-					<Card.Header>{title}</Card.Header>
-					<Card.Body style={{ backgroundColor: color }}>
+					<Card.Header className="recipe-card-header">{title}</Card.Header>
+					<Card.Body className="recipe-card-body" style={{ backgroundColor: color }}>
 						<Container className="recipe-card-container" fluid="md">
 							<Row>
 								<Col>
-									<h5 className="card-title">
+									<h5 className="recipe-card-title">
 										{_author_title}
 									</h5>
-									<p className="card-text">{author}</p>
+									<p className="recipe-card-text">{author}</p>
 								</Col>
 								<Col>
-									<h5 className="card-title">
+									<h5 className="recipe-card-title">
 										{_difficulty_title}
 									</h5>
-									<p className="card-text">{difficulty}</p>
+									<p className="recipe-card-text">{difficulty}</p>
 								</Col>
 								<Col>
-									<h5 className="card-title">
+									<h5 className="recipe-card-title">
 										{_time_required_title}
 									</h5>
-									<p className="card-text">{_time_data}</p>
+									<p className="recipe-card-text">{_time_data}</p>
 								</Col>
 							</Row>
 							<Row>
-								<p className="card-text">{message}</p>
+								<p className="recipe-card-text">{message}</p>
 							</Row>
 						</Container>
 					</Card.Body>

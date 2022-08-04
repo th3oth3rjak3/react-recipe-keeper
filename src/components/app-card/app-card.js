@@ -5,11 +5,11 @@ import "./app-card.css";
 
 function AppCard({link, color, title, subtitle}) {
 	return (
-		<Card>
+		<Card className="app-card">
 			<NavLink to={link} className="nav-link">
-				<Card.Body style={{ backgroundColor: color }}>
-					<h5 className="card-title">{title}</h5>
-					<p className="card-text">{subtitle}</p>
+				<Card.Body className="app-card-body" style={{ backgroundColor: color }}>
+					<h5 className="app-card-title">{title}</h5>
+					<p className="app-card-text">{subtitle}</p>
 				</Card.Body>
 			</NavLink>
 		</Card>
