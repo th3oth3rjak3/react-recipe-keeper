@@ -11,7 +11,7 @@ export default function RecipeHeaderView({
 
 	// local variables
 	const time_required =
-		time_amount + " " + time_units + (time_amount === 1 ? "" : "s");
+		time_amount + " " + time_units + (time_amount === "1" ? "" : "s");
 
 	// Template
 	return (
