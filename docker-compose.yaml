@@ -8,5 +8,9 @@ services:
     build: ./server
     ports:
       - "3001:3001"
+  mongoDB:
+    image: "mongo"
+    volumes:
+      - .:/database
   unit-converter:
     image: "th3oth3rjak3/unit-converter"
