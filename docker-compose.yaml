@@ -10,6 +10,8 @@ services:
       - "3001:3001"
   mongoDB:
     image: "mongo"
+    ports:
+      - "27017:27017"
     volumes:
       - .:/database
   unit-converter:
