@@ -9,4 +9,4 @@ services:
     ports:
       - "3001:3001"
   unit-converter:
-    image: "unit-converter"
+    image: "th3oth3rjak3/unit-converter"
