@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Server IP address and port
-const SERVER_ROOT = "http://192.168.86.22:3001/";
+const SERVER_ROOT = "http://localhost:3001/";
 
 // Headers for HTTP requests
 const HEADERS = {
@@ -17,7 +17,7 @@ async function getMyRecipes(searchParam = "") {
 		url += "/" + searchParam;
 	}
 	let response = await axios
-		.get(url, HEADERS)
+		.post(url, {}, HEADERS)
 		.then((res) => res.data)
 		.catch((err) => console.error(err));
 	return response;
@@ -27,7 +27,7 @@ async function getMyRecipes(searchParam = "") {
 async function getRecipeDetails(searchParam) {
 	let url = SERVER_ROOT + "GetRecipe/" + searchParam;
 	let response = await axios
-		.get(url, HEADERS)
+		.post(url, {}, HEADERS)
 		.then((res) => res.data)
 		.catch((err) => console.error(err));
 

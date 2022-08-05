@@ -1,0 +1,10 @@
+./node_modules
+Dockerfile
+.dockerignore
+docker-compose.yaml
+./.git
+package.json
+package-lock.json
+./public
+./coverage
+./src

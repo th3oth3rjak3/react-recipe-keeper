@@ -19,14 +19,14 @@ function Help() {
 						</li>
 						<br />
 						<img
-							src="../../assets/AddRecipeNavigation.png"
+							src="./Assets/AddRecipeNavigation.png"
 							alt=""
 						/>
 						<br />
 						<small>Adding a recipe from the navigation bar.</small>
 						<br />
 						<br />
-						<img src="../../assets/AddRecipeHome.png" alt="" />
+						<img src="./Assets/AddRecipeHome.png" alt="" />
 						<br />
 						<small>Adding a recipe from the Home Page.</small>
 						<br />
@@ -37,7 +37,7 @@ function Help() {
 							<span className="underline bold red">required</span>
 							. <br />
 							<br />
-							<img src="../../assets/AdminSection.png" alt="" />
+							<img src="./Assets/AdminSection.png" alt="" />
 							<br />
 							<small>
 								Recipe Header Details - Required Fields
@@ -93,7 +93,7 @@ function Help() {
 							of the ingredient fields are optional.
 						</li>
 						<br />
-						<img src="../../assets/IngredientSection.png" alt="" />
+						<img src="./Assets/IngredientSection.png" alt="" />
 						<br />
 						<small>Ingredient Section - All Fields Optional</small>
 						<br />
@@ -157,7 +157,7 @@ function Help() {
 						<br />
 						<li>Enter all of the instructions for the recipe.</li>
 						<br />
-						<img src="../../assets/InstructionSection.png" alt="" />
+						<img src="./Assets/InstructionSection.png" alt="" />
 						<br />
 						<small>Instruction Section - All Fields Optional</small>
 						<br />
@@ -201,7 +201,7 @@ function Help() {
 					<ol>
 						<li>Using the "Search Recipes" feature.</li>
 						<br />
-						<img src="../../assets/SearchFeature.png" alt="" />
+						<img src="./Assets/SearchFeature.png" alt="" />
 						<br />
 						<small>Searching By Recipe Title</small>
 						<br />
@@ -220,12 +220,12 @@ function Help() {
 						<br />
 						<li>Using the "My Recipes" link.</li>
 						<br />
-						<img src="../../assets/MyRecipesLink.png" alt="" />
+						<img src="./Assets/MyRecipesLink.png" alt="" />
 						<br />
 						<small>My Recipes - Navigation Link</small>
 						<br />
 						<br />
-						<img src="../../assets/MyRecipesHome.png" alt="" />
+						<img src="./Assets/MyRecipesHome.png" alt="" />
 						<br />
 						<small>My Recipes - Home Page</small>
 						<br />
@@ -247,7 +247,7 @@ function Help() {
 							: Using the Address Bar.
 						</li>
 						<br />
-						<img src="../../assets/UrlSearch.png" alt="" />
+						<img src="./Assets/UrlSearch.png" alt="" />
 						<br />
 						<small>URL Search - Advanced</small>
 						<br />
@@ -290,7 +290,7 @@ function Help() {
 						</li>
 						<br />
 						<img
-							src="../../assets/StrikethroughButtons.png"
+							src="./Assets/StrikethroughButtons.png"
 							alt=""
 						/>
 						<br />
@@ -315,7 +315,7 @@ function Help() {
 							method.
 						</li>
 						<br />
-						<img src="../../assets/EditButton.png" alt="" />
+						<img src="./Assets/EditButton.png" alt="" />
 						<br />
 						<small>The Edit and Delete Buttons</small>
 						<br />
@@ -333,7 +333,7 @@ function Help() {
 							button.
 						</li>
 						<br />
-						<img src="../../assets/UpdateButton.png" alt="" />
+						<img src="./Assets/UpdateButton.png" alt="" />
 						<br />
 						<small>The Update and Cancel Buttons</small>
 						<br />
@@ -350,7 +350,7 @@ function Help() {
 							method.
 						</li>
 						<br />
-						<img src="../../assets/EditButton.png" alt="" />
+						<img src="./Assets/EditButton.png" alt="" />
 						<br />
 						<small>The Edit and Delete Buttons</small>
 						<br />
@@ -367,7 +367,7 @@ function Help() {
 							"Cancel" button.
 						</li>
 						<br />
-						<img src="../../assets/DeleteButton.png" alt="" />
+						<img src="./Assets/DeleteButton.png" alt="" />
 						<br />
 						<small>
 							The Delete and Cancel Buttons in the Modal Window

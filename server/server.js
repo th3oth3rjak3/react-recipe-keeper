@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
-const PORT = 3001;
 const cors = require("cors");
 const mongoose = require("mongoose");
 const axios = require("axios");
+const path = require("path");
+require("dotenv").config();
+const PORT = process.env.PORT;
 
 // Local instance of MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/RecipeKeeper");
+mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}`);
 
 // Define mongoose schema for MongoDB
 let recipeSchema = new mongoose.Schema({
@@ -44,6 +46,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, '../build')));
+
+// Route for serving the static build file
+app.get('/*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
+
 // Route for adding a recipe
 app.post("/AddRecipe", (req, res) => {
 	// Add the new recipe to the database
@@ -65,7 +74,7 @@ app.post("/AddRecipe", (req, res) => {
 });
 
 // Route for getting an individual recipe details
-app.get("/GetRecipe/:id", (req, res) => {
+app.post("/GetRecipe/:id", (req, res) => {
 	// Local function to find one recipe from the database
 	const findRecipe = async (filter) => {
 		const query = Recipe.find();
@@ -152,7 +161,7 @@ app.put("/UpdateRecipe/:id", (req, res) => {
 });
 
 // Return all recipe results
-app.get("/MyRecipes", (req, res) => {
+app.post("/MyRecipes", (req, res) => {
 	// Local search function
 	const searchRecipes = async (filter) => {
 		// Sort recipes by title A-Z
@@ -178,7 +187,7 @@ app.get("/MyRecipes", (req, res) => {
 });
 
 // Route for when a user performs a navbar search
-app.get("/MyRecipes/:search_val", (req, res) => {
+app.post("/MyRecipes/:search_val", (req, res) => {
 	// Local search function to filter database results
 	const searchRecipes = async (filter) => {
 		const query = Recipe.find(filter).sort({
@@ -235,7 +244,7 @@ app.post("/Conversion", (req, res) => {
 	if (req.body) {
 		const data = req.body;
 		axios
-			.post("http://192.168.86.22:3002/Conversion", data)
+			.post(`${process.env.MICROSERVICE_URI}/Conversion`, data)
 			.then((response) => {
 				res.status(200).send(response.data);
 			});

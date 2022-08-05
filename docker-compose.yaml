@@ -1,18 +1,31 @@
-version: "1.0"
 services:
-  front-end:
-    build: .
-    ports:
-      - "3000:3000"
-  back-end:
-    build: ./server
-    ports:
-      - "3001:3001"
+  
+  # MongoDB container service
   mongoDB:
-    image: "mongo"
-    ports:
-      - "27017:27017"
+    image: mongo:latest
+    restart: always
     volumes:
-      - .:/database
+      - RecipeKeeperDB:/data/db
+  
+  # Unit Conversion Service
   unit-converter:
     image: "th3oth3rjak3/unit-converter"
+    restart: always
+
+  # RecipeKeeper application server
+  app:
+    build: .
+    ports:
+      - 3001:3001
+    environment:
+      PORT: 3001
+      MONGODB_URI: mongodb://mongoDB:27017
+      DB_NAME: RecipeKeeperDB
+      MICROSERVICE_URI: http://unit-converter:3002
+    depends_on:
+      - mongoDB
+      - unit-converter
+    restart: always
+
+volumes:
+  RecipeKeeperDB: {}
