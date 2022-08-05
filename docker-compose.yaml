@@ -1,0 +1,12 @@
+version: "1.0"
+services:
+  front-end:
+    build: .
+    ports:
+      - "3000:3000"
+  back-end:
+    build: ./server
+    ports:
+      - "3001:3001"
+  unit-converter:
+    image: "unit-converter"
