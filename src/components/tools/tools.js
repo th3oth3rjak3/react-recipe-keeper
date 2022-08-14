@@ -8,6 +8,7 @@ import "./tools.css";
 export default function Tools() {
 	// Default shape of conversion object
 	const conversionDefault = {
+		fractionFrom: "",
 		amountFrom: "",
 		amountTo: "",
 		unitsFrom: "",
@@ -82,6 +83,14 @@ export default function Tools() {
 			[name]: value,
 		}));
 
+
+		if (name === "fractionFrom") {
+			setConvertData((prevState) => ({
+				...prevState,
+				amountFrom: value,
+			}));
+		}
+
 		// When the unitsFrom dropdown changes, update the unitsTo dropdown
 		if (name === "unitsFrom") {
 			// If a temperature was chosen
@@ -151,6 +160,28 @@ export default function Tools() {
 				noValidate
 			>
 				<Row className="m-3">
+					<Col xl>
+					<FloatingLabel label="Fraction Conversion" className="mb-3">
+							<Form.Select
+								name="fractionFrom"
+								value={convertData.fractionFrom}
+								onChange={handleChanges}
+								required
+							>
+								<option value="">{""}</option>
+								<option value="0.125">{"1/8"}</option>
+								<option value="0.25">{"1/4"}</option>
+								<option value="0.375">{"3/8"}</option>
+								<option value="0.5">{"1/2"}</option>
+								<option value="0.625">{"5/8"}</option>
+								<option value="0.75">{"3/4"}</option>
+								<option value="0.875">{"7/8"}</option>
+							</Form.Select>
+							<Form.Control.Feedback type="invalid">
+								Units cannot be empty.
+							</Form.Control.Feedback>
+						</FloatingLabel>
+					</Col>
 					<Col xl>
 						<FloatingLabel label="Amount From" className="mb-3">
 							<Form.Control
