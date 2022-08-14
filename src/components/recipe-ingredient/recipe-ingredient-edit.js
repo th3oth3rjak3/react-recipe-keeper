@@ -83,7 +83,6 @@ export default function RecipeIngredientEdit({
 							<FloatingLabel label="Count" className="mb-3">
 								<Form.Control
 									name="count"
-									pattern="[0-9]*"
 									onChange={(e) => onIngredientChange(index, e)}
 									value={ingredient.count}
 									type="text"
@@ -98,7 +97,6 @@ export default function RecipeIngredientEdit({
 							<FloatingLabel label="Measurement" className="mb-3">
 								<Form.Control
 									name="volume"
-									pattern="[0-9]*"
 									onChange={(e) => onIngredientChange(index, e)}
 									value={ingredient.volume}
 									type="text"
@@ -117,13 +115,13 @@ export default function RecipeIngredientEdit({
 									value={ingredient.units}
 									title="Units of measure (e.g. Ounces)"
 								>
-									<option disabled value="">
+									<option value="">
 										{" "}
 									</option>
 									{options.map((option, index) => (
 										<option key={index} value={option.value}>
 											{option.label +
-												(ingredient.count !== "" || ingredient.volume === "1"
+												(ingredient.count !== "" || (ingredient.volume === "1" || ingredient.volume.includes("/"))
 													? ""
 													: "s")}
 										</option>
