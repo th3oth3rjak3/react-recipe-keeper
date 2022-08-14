@@ -16,7 +16,7 @@ services:
   app:
     build: .
     ports:
-      - 3001:3001
+      - 33089:3001
     environment:
       PORT: 3001
       MONGODB_URI: mongodb://mongoDB:27017

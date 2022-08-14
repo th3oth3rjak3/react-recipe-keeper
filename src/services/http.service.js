@@ -1,7 +1,11 @@
 import axios from "axios";
+import CLIENT_ENV from "./env.js";
+
+// Clientside environment variables
+const env = new CLIENT_ENV();
 
 // Server IP address and port
-const SERVER_ROOT = "http://localhost:3001/";
+const SERVER_ROOT = `http://${env.IP_ADDRESS}:${env.PORT}/`;
 
 // Headers for HTTP requests
 const HEADERS = {
